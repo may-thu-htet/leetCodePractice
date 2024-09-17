@@ -1,13 +1,21 @@
 function findMedianSortedArrays(nums1, nums2) {
   // Ensure nums1 is the smaller array to minimize binary search operations
   if (nums1.length > nums2.length) {
-    return findMedianSortedArrays(nums2, nums1); // Swap for optimization
+    [nums1, nums2] = [nums2, nums1];
   }
 
   let m = nums1.length;
   let n = nums2.length;
   let low = 0,
     high = m;
+
+  // handle cases when one of the array is empty
+  if (m === 0) {
+    return findMedianForSingleArray(nums2);
+  }
+  if (n === 0) {
+    return findMedianForSingleArray(nums1);
+  }
 
   while (low <= high) {
     // Partitioning nums1 and nums2
@@ -43,4 +51,13 @@ function findMedianSortedArrays(nums1, nums2) {
 
   // If we exit the loop, there's no valid median (shouldn't happen in valid input)
   throw new Error("Input arrays are not valid for finding median");
+}
+
+function findMedianForSingleArray(array) {
+  let len = array.length;
+  if (len % 2 === 1) {
+    return array[Math.floor(len / 2)];
+  } else {
+    return (array[Math.floor(len / 2) - 1] + array[Math.floor(len / 2)]) / 2;
+  }
 }
