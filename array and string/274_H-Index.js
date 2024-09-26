@@ -3,7 +3,7 @@
  * @return {number}
  */
 var hIndex = function (citations) {
-  // Step 1: Sort the citations array in non-decreasing order
+  // Step 1: Sort the citations array in non-increasing order
   citations.sort((a, b) => b - a); // Sort in descending order
 
   // Step 2: Iterate over the sorted citations array
