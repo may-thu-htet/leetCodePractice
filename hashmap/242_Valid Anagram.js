@@ -35,7 +35,6 @@ var isAnagram = function (s, t) {
   for (let i = 0; i < t.length; i++) {
     const charS = s[i];
     const charT = t[i];
-
     originalStringMap.set(
       charS,
       originalStringMap.has(charS) ? originalStringMap.get(charS) + 1 : 1
