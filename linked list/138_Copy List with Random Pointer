@@ -33,3 +33,5 @@ var copyRandomList = function (head) {
   }
   return copyMap.get(head);
 };
+// This is the hashmap with two pass
+// Time:O(n), Space:O(n)
