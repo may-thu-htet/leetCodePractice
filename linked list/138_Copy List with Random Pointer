@@ -1,0 +1,35 @@
+/**
+ * // Definition for a _Node.
+ * function _Node(val, next, random) {
+ *    this.val = val;
+ *    this.next = next;
+ *    this.random = random;
+ * };
+ */
+
+/**
+ * @param {_Node} head
+ * @return {_Node}
+ */
+var copyRandomList = function (head) {
+  // creating hashmap first
+  let cur = head;
+  let copyMap = new Map();
+  copyMap.set(null, null);
+
+  while (cur) {
+    const copy = new Node(cur.val, null, null);
+    copyMap.set(cur, copy);
+    cur = cur.next;
+  }
+
+  // second pass for adding pointers (next and random)
+  cur = head;
+  while (cur) {
+    const copy = copyMap.get(cur);
+    copy.next = copyMap.get(cur.next);
+    copy.random = copyMap.get(cur.random);
+    cur = cur.next;
+  }
+  return copyMap.get(head);
+};
