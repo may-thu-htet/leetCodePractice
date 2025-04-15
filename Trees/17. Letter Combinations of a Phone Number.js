@@ -15,17 +15,17 @@ var letterCombinations = function (digits) {
   };
 
   let res = [];
-  if (digits.length === 0) return res;
-  function helper(i, substr) {
-    if (substr.length === digits.length) {
-      res.push(substr);
+  let cur = "";
+  if (digits.length == 0) return res;
+  function helper(i, cur) {
+    if (cur.length == digits.length) {
+      res.push(cur);
       return;
     }
-
     for (let c of digitToLetter[digits[i]]) {
-      helper(i + 1, substr + c);
+      helper(i + 1, cur + c);
     }
   }
-  helper(0, "");
+  helper(0, cur);
   return res;
 };
