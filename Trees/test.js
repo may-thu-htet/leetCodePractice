@@ -26,11 +26,12 @@ function findDuplicate() {
   for (let i = 0; i < modifiedData.length; i++) {
     let id = modifiedData[i][0];
     let name = [modifiedData[i][2]];
-    if (!idToName[id]) {
-      idToName[id] = [name];
-    } else {
-      idToName[id].push(name);
-    }
+    // if (!idToName[id]) {
+    //   idToName[id] = [name];
+    // } else {
+    //   idToName[id].push(name);
+    // }
+    !idToName[id] ? (idToName[id] = [name]) : idToName[id].push(name);
     if (idToName[id].length > 1) {
       dupId.push(id);
     }
